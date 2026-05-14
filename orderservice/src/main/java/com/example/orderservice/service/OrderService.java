@@ -15,14 +15,14 @@ public class OrderService {
     private RestTemplate restTemplate;
     public Order createOrder(Order order) {
         UserDTO user = restTemplate.getForObject(
-                "http://localhost:8081/users/" + order.getUserId(),
+                "http://user-service:8081/users/" + order.getUserId(),
                 UserDTO.class
         );
         if (user == null) {
             throw new RuntimeException("User not found");
         }
         FoodDTO food = restTemplate.getForObject(
-                "http://localhost:8082/foods/" + order.getFoodId(),
+                "http://food-service:8082/foods/" + order.getFoodId(),
                 FoodDTO.class
         );
         if (food == null) {

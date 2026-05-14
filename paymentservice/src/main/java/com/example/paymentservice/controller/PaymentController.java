@@ -17,7 +17,7 @@ public class PaymentController {
         Map<String, String> body = new HashMap<>();
         body.put("status", "PAID");
         restTemplate.put(
-                "http://localhost:8083/orders/"
+                "http://order-service:8083/orders/"
                         + request.getOrderId()
                         + "/status",
                 body
